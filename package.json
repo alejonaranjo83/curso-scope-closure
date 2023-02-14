@@ -1,0 +1,20 @@
+{
+  "name": "curso-scope-closure",
+  "version": "1.0.0",
+  "description": "Curso de Platzi para aprender a trabajar con scopes y closures",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejonaranjo83/curso-scope-closure.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejonaranjo83/curso-scope-closure/issues"
+  },
+  "homepage": "https://github.com/alejonaranjo83/curso-scope-closure#readme"
+}
