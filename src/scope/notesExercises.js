@@ -208,3 +208,138 @@ function myFunction() {
 }
 
 myFunction();
+
+
+
+
+
+// PLAYGROUND (Clase 8)
+// En este desafío recibirás dos números aleatorios por parámetros.
+
+// Usando las closures deberás crear una función a la cual se pueda llamar en primer lugar con un solo número y secuencialmente volver a llamarla para completar la suma con el siguiente número:
+
+// La solución deberá tener un input y output como la siguiente, en algunos casos puede que no se mande el segundo número por lo que deberás pensar en como manejar ese tipo de casos.
+
+// Input:
+// sumWithClosure(2)(3);
+
+// Output:
+
+// 5
+
+// Input:
+
+// sumWithClosure(90)();
+
+// Output:
+
+// 90
+
+// I wasn´t able to test within the playground of Platzi. Instead, I used my navigator and it worked.
+
+function sumWithClosure(firstNumber, secondNumber) {
+    if (typeof firstNumber !== "number") {
+        console.log("Please use numbers within the argument");
+    } else {
+        let a = firstNumber;
+        function adding() {
+            if (typeof secondNumber === "number") {
+                let b = secondNumber;
+                result = a + b;
+            } else {
+                result = a;
+            }
+            return result
+        }
+        return adding();
+    }
+}
+
+// Evaluating how the function works within my navigator:
+sumWithClosure(2,3)
+sumWithClosure(90)
+sumWithClosure("asdasd")
+sumWithClosure(true)
+sumWithClosure(1, "3")
+
+
+
+
+
+// PRACTICING CLOSURES
+function greeting() {
+    let username = "Alejo";
+
+    function displayUserName() {
+        return `hello ${username}! how are you doing?`
+    }
+    // return displayUserName(); //esto me permite obtener el resultado q quiero 
+    return displayUserName; //esto me muestra la definición de la fxn
+}
+
+const g = greeting();
+console.log(g);
+console.log(g());
+
+
+
+// Another case to practice: "moneybox"
+
+// By this way, the count starts each time the function is been executed (doesn´t remember what was previously saved)
+function moneyBox(coins) {
+    let saveCoins = 0; //start with 0 savings
+    saveCoins += coins; //each coin in the argument is going to be added to the savings
+    console.log(`MoneyBox: $${saveCoins}`)
+}
+
+moneyBox(5)
+moneyBox(2)
+moneyBox(10)
+
+
+// Remembering what was previously saved:
+function moneyBox() {
+    let saveCoins = 0; //start with 0 savings
+    
+    function countCoins(coins) {
+        saveCoins += coins; //each coin in the argument is going to be added to the savings that are located outside the function, in order to be able to add the money and not start over again from 0
+        console.log(`MoneyBox: $${saveCoins}`)
+    }
+    return countCoins; 
+}
+
+const myMoneyBox = moneyBox(); //creating my personal moneybox
+myMoneyBox(5);
+myMoneyBox(2);
+myMoneyBox(10);
+myMoneyBox(20);
+
+const myMoneyBoxOther = moneyBox(); //creating a moneybox for someone else
+myMoneyBoxOther(2.5);
+myMoneyBoxOther(1);
+myMoneyBoxOther(5);
+myMoneyBoxOther(10);
+
+
+
+
+// PLAYGROUND 2
+// En este desafío tendrás que crear un closure que nos permita almacenar datos de mascotas en cualquier momento.
+
+// Los datos pueden venir de distintas maneras, pueden ser objetos, strings o arrays. En el primer llamado a la función nos servirá para crear nuestra lista en un inicio mientras que los demás llamados nos ayudará a agregar elementos al final de la lista.
+
+// Si en algún momento llamamos a la función sin pasarle ningún parámetro esta nos devolverá el array con los datos de todos las mascotas introducidas.
+
+// Input:
+
+const myPetList = createPetList();
+
+myPetList("michi");
+
+myPetList("firulais");
+
+myPetList();
+
+// Output:
+
+["michi", "firulais"]
