@@ -343,3 +343,43 @@ myPetList();
 // Output:
 
 ["michi", "firulais"]
+
+
+
+// Alternative 1:
+function createPetList() {
+    let zoo = [];
+
+    function addingAnimals(x) {
+        if(x != null) {
+            zoo.push(x)
+            console.log(zoo)
+        } else {
+            console.log(zoo)
+        }
+    }
+    return addingAnimals
+}
+
+
+// Alternative 2:
+function createPetList() {
+    let zoo = [];
+
+    return function addingAnimals(x) {
+        if(x != null) {
+            zoo.push(x)
+        } 
+        return zoo
+    }
+}
+
+
+
+const myPetList = createPetList();
+
+myPetList("michi");
+
+myPetList("firulais");
+
+myPetList();
