@@ -4,6 +4,9 @@
 // 3. Creo carpeta "src" dentro de la cual va "scope" que contiene "global.js"
 
 
+// Plugin de Visual Studio Code que permite ejecutar el código dentro del editor: Code Runner
+
+
 // Curso en PLATZI: https://platzi.com/cursos/javascript-closures-scope/
 
 
@@ -159,6 +162,7 @@ console.log(vehicles)
 
 // STRICT MODE
 // Es una fxnalidad q le permite al motor de JS cambiar la manera en q se ejecuta el código. Así se reducen las cosas q se pueden hacer, lo cual es bueno pq permite controlar errores q son más difíciles de percibir.
+// Nos asegura que cada variable está definida al momento de crear nuestro código.
 // Es necesario indicarlo al inicio del código o dentro de una fxn: "use strict"
 
 // Sin modo estricto puedo ejecutar variables q han sido asignadas pero no declaradas:
@@ -332,39 +336,22 @@ myMoneyBoxOther(10);
 
 // Input:
 
-const myPetList = createPetList();
+// const myPetList = createPetList();
 
-myPetList("michi");
+// myPetList("michi");
 
-myPetList("firulais");
+// myPetList("firulais");
 
-myPetList();
+// myPetList();
 
-// Output:
+// // Output:
 
-["michi", "firulais"]
+// ["michi", "firulais"]
 
 
 
-// Alternative 1:
 function createPetList() {
-    let zoo = [];
-
-    function addingAnimals(x) {
-        if(x != null) {
-            zoo.push(x)
-            console.log(zoo)
-        } else {
-            console.log(zoo)
-        }
-    }
-    return addingAnimals
-}
-
-
-// Alternative 2:
-function createPetList() {
-    let zoo = [];
+    const zoo = [];
 
     return function addingAnimals(x) {
         if(x != null) {
@@ -375,7 +362,6 @@ function createPetList() {
 }
 
 
-
 const myPetList = createPetList();
 
 myPetList("michi");
@@ -383,3 +369,85 @@ myPetList("michi");
 myPetList("firulais");
 
 myPetList();
+
+
+
+
+
+
+// HOISTING (Elevación):
+
+// Término para describir que las declaraciones de variables y funciones son desplazadas a la parte superior del scope más cercano, scope global o de función. Esto sucede solamente con las declaraciones y no con las asignaciones.
+
+
+// En este orden, no puedo obtener lo q quiero. JS sube la declaración de la variable y le asigna un "undefined" para poder seguir ejecutando el código
+console.log(nameOfDog);
+
+var nameOfDog = "Elmo"
+
+
+
+// Lo mismo sucede con las fxnes
+nameOfDog();
+
+function nameOfDog() {
+    console.log(`The best dog is ${elmo}`);
+}
+
+var elmo = "Elmito;"
+
+
+// Buenas prácticas para usar hoisting
+// 1. No utilices var en las declaraciones de variables.
+// 2. Escribe primero las funciones y luego su invocación.
+
+
+
+
+
+
+// DEBUGGING
+// Una manera de solucionar los bugs (bichos) del código... errores de la aplicación.
+
+// En el navegador puedo usar palabra "debugger". Esto pausa la ejecución del código en el lugar donde la pongo. Es una alternativa para no tener q estar usando "console.log" para ver qué está pasando con el código.
+
+var a = "Hello";
+
+function hello() {
+    let b = "Hello World";
+    const c = "Hello World";
+    debugger;
+}
+
+hello();
+
+
+
+
+
+
+
+
+
+// Preguntas de Examen:
+
+// ¿Qué sucederá si ejecutamos el siguiente código? Elmo
+nameOfDog("Elmo"); 
+function nameOfDog(name) {
+    console.log(name); 
+}; 
+
+
+// Analiza el siguiente código e identifica la variable declarada en el alcance de la función: var fruit1 = "apple"
+const fruits = () => { 
+    if (true) { 
+        var fruit1 = 'apple'; 
+        const fruit2 = 'banana'; 
+        let fruit3 = 'kiwi';
+        console.log(fruit2);
+        console.log(fruit3)
+    } 
+    console.log(fruit1);
+    }
+
+fruits()
